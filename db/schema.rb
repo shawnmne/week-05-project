@@ -16,17 +16,18 @@ ActiveRecord::Schema.define(version: 1) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "gorilla", force: :cascade do |t|
+  create_table "gorillas", force: :cascade do |t|
     t.string  "name",        null: false
     t.integer "age",         null: false
     t.integer "preserve_id"
   end
 
-  create_table "preserve", force: :cascade do |t|
+  create_table "preserves", force: :cascade do |t|
     t.string "location", null: false
+    t.string "name",     null: false
   end
 
-  create_table "wrangler", force: :cascade do |t|
+  create_table "wranglers", force: :cascade do |t|
     t.string  "name",        null: false
     t.integer "age",         null: false
     t.integer "preserve_id"

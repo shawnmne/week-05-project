@@ -1,7 +1,7 @@
 require "minitest/autorun"
 require "minitest/rg"
 require "sinatra/activerecord"
-require_relative "../app/models/book.rb"
-require_relative "../app/models/patron.rb"
-require_relative "../app/models/library.rb"
-require_relative "../app/models/staff_member.rb"
+#require_relative "../app/models/gorilla.rb"
+require_relative "../app/models/preserve.rb"
+#require_relative "../app/models/wrangler.rb"
+
