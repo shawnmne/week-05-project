@@ -1,0 +1,10 @@
+<h1>Current Preserves Open</h1>
+
+<ol>
+	<% @preserves.each do |preserve| %>
+		<li><a href="/preserves/<%= preserve.id %>"><%= preserve.name %></li>
+	<% end %>
+</ol>
+
+<p><a href="/preserves/new">Open New Preserve</a></p>
+<p><a href="/">Front Page</a></p>

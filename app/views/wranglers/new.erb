@@ -1,0 +1,23 @@
+<% if @wrangler.errors.any? %>
+	<% @wrangler.errors.full_messages.each do |m| %>
+		<p>Error: <%= m %></p>
+	<% end %>
+<% end %>
+
+<h1>New Hire</h1>
+
+
+<form action="/wranglers" method="post">
+ Name:<input type="text" name="name"></br>
+ Age:<input type="text", name="age"></br>
+
+   <select name="preserve_id">
+     <option>No Preserve</option>
+     <% @preserves.each do |preserve| %>
+       <option value="<%= preserve.id %>">
+         <%= preserve.name %>
+       </option>
+     <% end %>
+   </select>
+  <input type="submit" value="Brand New Wrangler">
+</form>

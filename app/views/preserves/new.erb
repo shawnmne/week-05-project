@@ -1,0 +1,14 @@
+<% if @preserve.errors.any? %>
+	<% @preserve.errors.full_messages.each do |m| %>
+		<p>Error: <%= m %></p>
+	<% end %>
+<% end %>
+
+<h1>Open New Preserve</h1>
+
+
+<form action="/preserves" method="post">
+ Name:<input type="text" name="name"></br>
+ Location:<input type="text", name="location"></br>
+ <input type="submit" value="New Preserve">
+</form>

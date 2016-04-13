@@ -1,0 +1,10 @@
+<h1>Current Gorilla Wranglers Available</h1>
+
+<ol>
+	<% @wranglers.each do |wrangler| %>
+		<li><a href="/wranglers/<%= wrangler.id %>"><%= wrangler.name %></li>
+	<% end %>
+</ol>
+
+<p><a href="/wranglers/new">New Hire</a></p>
+<p><a href="/">Front Page</a></p>

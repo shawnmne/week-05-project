@@ -1,0 +1,7 @@
+<h1>All Wranglers at <%= @preserve.name %></h1>
+<% @wranglers.each do |wrangler| %>
+	<% if @preserve.id == wrangler.preserve_id %>
+		<p><em>Name:</em> <%= wrangler.name %></p>
+		<p><em>Age:</em> <%= wrangler.age %></p>
+  <% end %>
+ <% end %>

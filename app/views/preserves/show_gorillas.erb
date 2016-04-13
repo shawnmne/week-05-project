@@ -1,0 +1,7 @@
+<h1>All Gorillas at <%= @preserve.name %></h1>
+<% @gorillas.each do |gorilla| %>
+	<% if @preserve.id == gorilla.preserve_id %>
+		<p><em>Name:</em> <%= gorilla.name %></p>
+		<p><em>Age:</em> <%= gorilla.age %></p>
+  <% end %>
+ <% end %>

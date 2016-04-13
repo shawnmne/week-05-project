@@ -1,0 +1,29 @@
+<h1>Edit: <%= @preserve.name %></h1>
+<% if @preserve %>
+
+ <form action="/preserves/<%= @preserve.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+ Name:<input type="text" name="name" value="<%= @preserve.name %>" ></br>
+ Location:<input type="text", name="location", value="<%= @preserve.location %>"></br>
+
+  <input type="submit" value="Edit Preserve">
+</form>
+<% else %>
+  <p>No Preserve of that ID exists</p>
+<% end %>
+
+<% if @preserves.count > 1 %>
+  <h2><%= @preserve.name %> over run by poachers</h2>
+    <form action="/preserves/<%= @preserve.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <select name="new_preserve_id">
+          <% @preserves.each do |p| %>
+            <% unless p.id == @preserve.id %>
+            <option value="<%= p.id %>"><%= p.name %></option>
+          <% end %>
+        <% end %>
+       <input type ="submit" value="Close Preserve">
+    </form>
+  <% end %>
+
+  

@@ -1,0 +1,11 @@
+<% if @preserve %>
+  <h1><%= @preserve.name %></h1>
+ 	<p><em>Location:</em> <%= @preserve.location %></p>
+<% else %>
+  <p>No preserve by that name exists</p>
+<% end %>
+
+<p><a href="/preserves/<%= @preserve.id %>/edit">Edit Preserve</a></p>
+<p><a href="/preserves/<%= @preserve.id %>/gorillas">Show all Gorillas at Preserve</a></p>
+<p><a href="/preserves/<%= @preserve.id %>/wranglers">Show all Wranglers at Preserve</a></p>
+<p><a href="/preserves">Back to All Preserves</a></p>

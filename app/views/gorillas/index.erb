@@ -1,0 +1,10 @@
+<h1>Gorilla List</h1>
+
+<ol>
+	<% @gorillas.each do |gorilla| %>
+		<li><a href="/gorillas/<%= gorilla.id %>"><%= gorilla.name %></li>
+	<% end %>
+</ol>
+
+<p><a href="/gorillas/new">New Gorilla</a></p>
+<p><a href="/">Front Page</a></p>

@@ -1,0 +1,11 @@
+<% if @wrangler %>
+  <h1><%= @wrangler.name %></h1>
+ 	<p><em>Age:</em> <%= @wrangler.age %></p>
+  <p><em>Preserve:</em> <%= @wrangler.preserve ? "#{@wrangler.preserve.name}" : "Off Duty, Gone Fishing" %></p>
+
+<% else %>
+  <p>No wrangler by that name exists</p>
+<% end %>
+
+<p><a href="/wranglers/<%= @wrangler.id %>/edit">Edit Wrangler</a></p>
+<p><a href="/wranglers">Back to All Wranglers</a></p>

@@ -1,0 +1,23 @@
+<% if @gorilla.errors.any? %>
+	<% @gorilla.errors.full_messages.each do |m| %>
+		<p>Error: <%= m %></p>
+	<% end %>
+<% end %>
+
+<h1>Brand New Gorilla</h1>
+
+
+<form action="/gorillas" method="post">
+ Name:<input type="text" name="name"></br>
+ Age:<input type="text", name="age"></br>
+
+   <select name="preserve_id">
+     <option>No Preserve</option>
+     <% @preserves.each do |preserve| %>
+       <option value="<%= preserve.id %>">
+         <%= preserve.name %>
+       </option>
+     <% end %>
+   </select>
+  <input type="submit" value="Brand New Gorilla">
+</form>

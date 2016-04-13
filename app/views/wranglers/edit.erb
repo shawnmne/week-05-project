@@ -1,0 +1,31 @@
+<h1>Edit: <%= @wrangler.name %></h1>
+<% if @wrangler %>
+
+ <form action="/wranglers/<%= @wrangler.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+ Name:<input type="text" name="name" value="<%= @wrangler.name %>" ></br>
+ Age:<input type="text", name="age", value="<%= @wrangler.age %>"></br>
+   <select name="preserve_id">
+     <option>No Preserve</option>
+     <% @preserves.each do |preserve| %>
+       <% if preserve.id == @wrangler.preserve_id %>
+         <% selected = "selected" %>
+       <% else %>
+         <% selected = "" %>
+       <% end %>
+       <option value="<%= preserve.id %>" <%= selected %>>
+         <%= preserve.name %>
+       </option>
+     <% end %>
+   </select>
+  <input type="submit" value="Edit Wrangler">
+</form>
+<% else %>
+  <p>No Wrangler of that ID exists</p>
+<% end %>
+
+<h2><%= @wrangler.name %> wants to retire</h2>
+  <form action="/wranglers/<%= @wrangler.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type ="submit" value="Retire Wrangler?">
+  </form>

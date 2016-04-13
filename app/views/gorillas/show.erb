@@ -1,0 +1,11 @@
+<% if @gorilla %>
+  <h1><%= @gorilla.name %></h1>
+ 	<p><em>Age:</em> <%= @gorilla.age %></p>
+  <p><em>Preserve:</em> <%= @gorilla.preserve ? "#{@gorilla.preserve.name}" : "Escaped the preserve area" %></p>
+
+<% else %>
+  <p>No gorilla by that name exists</p>
+<% end %>
+
+<p><a href="/gorillas/<%= @gorilla.id %>/edit">Edit Gorilla</a></p>
+<p><a href="/gorillas">Back to All Gorillas</a></p>

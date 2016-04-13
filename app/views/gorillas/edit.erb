@@ -1,0 +1,31 @@
+<h1>Edit: <%= @gorilla.name %></h1>
+<% if @gorilla %>
+
+ <form action="/gorillas/<%= @gorilla.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+ Name:<input type="text" name="name" value="<%= @gorilla.name %>" ></br>
+ Age:<input type="text", name="age", value="<%= @gorilla.age %>"></br>
+   <select name="preserve_id">
+     <option>No Preserve</option>
+     <% @preserves.each do |preserve| %>
+       <% if preserve.id == @gorilla.preserve_id %>
+         <% selected = "selected" %>
+       <% else %>
+         <% selected = "" %>
+       <% end %>
+       <option value="<%= preserve.id %>" <%= selected %>>
+         <%= preserve.name %>
+       </option>
+     <% end %>
+   </select>
+  <input type="submit" value="Edit Gorilla">
+</form>
+<% else %>
+  <p>No Gorilla of that ID exists</p>
+<% end %>
+
+<h2>Give up on recapturing <%= @gorilla.name %></h2>
+  <form action="/gorillas/<%= @gorilla.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type ="submit" value="Gorilla is gone for ever">
+  </form>
