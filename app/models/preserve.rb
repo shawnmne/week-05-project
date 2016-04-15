@@ -16,4 +16,15 @@ class Preserve < ActiveRecord::Base
  
      true
    end
+
+   def gorillas_fighting?(gorillas)
+    count = 0
+    gorillas.each do |g|
+      if g.anger_level > 1
+        count += 1
+      end
+    end
+    count > 1
+  end
+
 end 
