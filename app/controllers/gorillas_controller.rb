@@ -42,8 +42,10 @@ end
  patch '/gorillas/:id' do
    @gorilla = Gorilla.find_by_id(params['id'])
    @preserve = Preserve.find_by_id(params['preserve_id'])
+   @gorilla.anger_level = @gorilla.anger_level + 1
    if @gorilla.update_attributes(name: params['name'], 
                                 age: params['age'],
+                                anger_level: @gorilla.anger_level,
                                 preserve: @preserve)
      redirect to("/gorillas/#{@gorilla.id}")
    else
@@ -69,6 +71,8 @@ end
  post '/gorillas/:id/wranglers/assign' do
    @gorilla = Gorilla.find_by_id(params['id'])
    @wrangler = Wrangler.find_by_id(params['wrangler_id'])
+   @gorilla.anger_level = @gorilla.anger_level - 1
+   @gorilla.update_attributes(anger_level: @gorilla.anger_level)
  
   @gorilla.wranglers << @wrangler
    redirect to("/gorillas/#{@gorilla.id}/wranglers")

@@ -1,3 +1,4 @@
+
 <% if @gorilla %>
   <h1><%= @gorilla.name %></h1>
  	<p><em>Age:</em> <%= @gorilla.age %></p>
@@ -6,6 +7,21 @@
 
 
   <p><em>Currently Located:</em> <%= @gorilla.preserve ? "#{@gorilla.preserve.name} Preserve" : "Escaped the preserve area" %></p>
+
+  <% if @gorilla.anger_level < 1 %>
+  	<hr>
+  	<h4><%= @gorilla.name %> is happy and doing fine.
+  	<hr>
+  <% elsif @gorilla.anger_level == 1 %>	
+		<hr>
+  	<h3><%= @gorilla.name %> is angry.
+  	<hr>
+   <% elsif @gorilla.anger_level > 1 %>	
+		<hr>
+  	<h2><%= @gorilla.name %> is mad and ready to fight.
+  	<hr>
+  <% end %>
+  
   <% if @gorilla.wranglers.count > 0 %>
 		<hr>  
 	  <h3>Wranglers currently assigned to take care of <%= @gorilla.name %></h3>
