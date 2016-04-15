@@ -1,0 +1,25 @@
+<h1>Assign A Wrangler</h1>
+<h3>More, if <%= @gorilla.name %> is especially unruly!</h3>
+ 
+ <ul>
+   <% @wranglers.each do |w| %>
+     <li>
+         <% if @gorilla.wranglers.include?(w) %>
+           <form action="/gorillas/<%= @gorilla.id %>/wranglers/remove" method="post">
+            <input type="hidden" name="wrangler_id" value="<%= w.id %>">
+             <div class="form-group">
+            <input type="submit" value="Remove <%= w.name %>" class="btn btn-danger">
+            </div>
+           </form>
+           <% else %>
+           <form action="/gorillas/<%= @gorilla.id %>/wranglers/assign" method="post">
+             <input type="hidden" name="wrangler_id" value="<%= w.id %>">
+              <div class="form-group">
+             <input type="submit" value="Assign <%= w.name %>" class="btn btn-primary">
+             </div>
+           </form>
+         <% end %>
+     </li>
+   <% end %>
+ </ul>
+<p><a href="/gorillas/<%= @gorilla.id %>">Return to <%= @gorilla.name %></a></p>

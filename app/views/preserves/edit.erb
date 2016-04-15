@@ -3,17 +3,19 @@
 
  <form action="/preserves/<%= @preserve.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
- Name:<input type="text" name="name" value="<%= @preserve.name %>" ></br>
- Location:<input type="text", name="location", value="<%= @preserve.location %>"></br>
+<h3>Name: <span class="label label-default"></h3><input type="text" name="name" value="<%= @preserve.name %>" class="form-control"></br>
+<h3>Location: <span class="label label-default"></h3><input type="text", name="location", value="<%= @preserve.location %>" class="form-control"></br>
 
-  <input type="submit" value="Edit Preserve">
+  <input type="submit" value="Edit Preserve" class="btn btn-primary">
 </form>
 <% else %>
   <p>No Preserve of that ID exists</p>
 <% end %>
 
 <% if @preserves.count > 1 %>
-  <h2><%= @preserve.name %> over run by poachers</h2>
+  <h2><%= @preserve.name %> overrun by poachers</h2>
+  <P>Please select a new preserve to reassign gorillas</P>
+  <p>and wranglers before closing a preserve</p>
     <form action="/preserves/<%= @preserve.id %>" method="post">
       <input type="hidden" name="_method" value="delete">
       <select name="new_preserve_id">
@@ -22,7 +24,7 @@
             <option value="<%= p.id %>"><%= p.name %></option>
           <% end %>
         <% end %>
-       <input type ="submit" value="Close Preserve">
+       <input type ="submit" value="Close Preserve" class="btn btn-danger">
     </form>
   <% end %>
 

@@ -8,10 +8,14 @@
 
 
 <form action="/gorillas" method="post">
- Name:<input type="text" name="name"></br>
- Age:<input type="text", name="age"></br>
 
-   <select name="preserve_id">
+ <h3>Name: <span class="label label-default"></h3><input type="text" class="form-control" name="name"></br>
+
+
+ <h3>Age: <span class="label label-default"></h3><input type="text" class="form-control" name="age"></br>
+
+
+ <h3>Preserve: <span class="label label-default"></h3><select name="preserve_id" class="form-control"> 
      <option>No Preserve</option>
      <% @preserves.each do |preserve| %>
        <option value="<%= preserve.id %>">
@@ -19,5 +23,7 @@
        </option>
      <% end %>
    </select>
-  <input type="submit" value="Brand New Gorilla">
+
+  <input type="submit" value="Brand New Gorilla" class="btn btn-primary" >
+
 </form>

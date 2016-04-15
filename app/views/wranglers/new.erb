@@ -8,10 +8,11 @@
 
 
 <form action="/wranglers" method="post">
- Name:<input type="text" name="name"></br>
- Age:<input type="text", name="age"></br>
+ <h3>Name: <span class="label label-default"></h3><input type="text" name="name" class="form-control"></br>
 
-   <select name="preserve_id">
+  <h3>Age: <span class="label label-default"></h3><input type="text", name="age" class="form-control"></br>
+  <h3>Preserve: <span class="label label-default"></h3>
+   <select name="preserve_id" class="form-control">
      <option>No Preserve</option>
      <% @preserves.each do |preserve| %>
        <option value="<%= preserve.id %>">
@@ -19,5 +20,5 @@
        </option>
      <% end %>
    </select>
-  <input type="submit" value="Brand New Wrangler">
+  <input type="submit" value="Brand New Wrangler" class="btn btn-primary">
 </form>

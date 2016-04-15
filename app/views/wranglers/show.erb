@@ -1,7 +1,10 @@
 <% if @wrangler %>
   <h1><%= @wrangler.name %></h1>
  	<p><em>Age:</em> <%= @wrangler.age %></p>
-  <p><em>Preserve:</em> <%= @wrangler.preserve ? "#{@wrangler.preserve.name}" : "Off Duty, Gone Fishing" %></p>
+
+ 	 	<img src="../wrangler<%= @wrangler.id %>.jpg" class="img-responsive" width="304" height="236"> 
+ 	 	
+  <p><em>Currently Located:</em> <%= @wrangler.preserve ? "#{@wrangler.preserve.name} Preserve" : "Off Duty, Gone Fishing" %></p>
 
 <% else %>
   <p>No wrangler by that name exists</p>

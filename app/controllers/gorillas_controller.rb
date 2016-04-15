@@ -26,7 +26,7 @@ end
 
 # Show
 get '/gorillas/:id' do
-  @gorilla = Gorilla.find_by_id(params['id']) 
+  @gorilla = Gorilla.find_by_id(params['id'])
   erb :"gorillas/show"
 end
 
@@ -59,3 +59,26 @@ end
    redirect to('/gorillas')
   end
 
+get '/gorillas/:id/wranglers' do
+   @gorilla = Gorilla.find_by_id(params['id'])
+   @wranglers = Wrangler.all
+  erb :"gorillas/wranglers"
+end
+ 
+ # Assigning a wrangler
+ post '/gorillas/:id/wranglers/assign' do
+   @gorilla = Gorilla.find_by_id(params['id'])
+   @wrangler = Wrangler.find_by_id(params['wrangler_id'])
+ 
+  @gorilla.wranglers << @wrangler
+   redirect to("/gorillas/#{@gorilla.id}/wranglers")
+ end
+ 
+ # Removing a wrangler
+ post '/gorillas/:id/wranglers/remove' do
+   @gorilla = Gorilla.find_by_id(params['id'])
+   @wrangler = Wrangler.find_by_id(params['wrangler_id'])
+ 
+   @gorilla.wranglers.delete(@wrangler)
+   redirect to("/gorillas/#{@gorilla.id}/wranglers")
+ end

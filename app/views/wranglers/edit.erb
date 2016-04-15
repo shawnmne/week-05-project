@@ -3,8 +3,10 @@
 
  <form action="/wranglers/<%= @wrangler.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
- Name:<input type="text" name="name" value="<%= @wrangler.name %>" ></br>
- Age:<input type="text", name="age", value="<%= @wrangler.age %>"></br>
+  <div class="form-group">
+ <h3>Name: <span class="label label-default"></h3><input type="text" name="name" value="<%= @wrangler.name %>" class="form-control"></br>
+<h3>Age: <span class="label label-default"></h3><input type="text", name="age", value="<%= @wrangler.age %>" class="form-control"></br>
+<h3>Preserve: <span class="label label-default"></h3>
    <select name="preserve_id">
      <option>No Preserve</option>
      <% @preserves.each do |preserve| %>
@@ -18,7 +20,7 @@
        </option>
      <% end %>
    </select>
-  <input type="submit" value="Edit Wrangler">
+  <input type="submit" value="Edit Wrangler" class="btn btn-primary">
 </form>
 <% else %>
   <p>No Wrangler of that ID exists</p>
@@ -27,5 +29,5 @@
 <h2><%= @wrangler.name %> wants to retire</h2>
   <form action="/wranglers/<%= @wrangler.id %>" method="post">
     <input type="hidden" name="_method" value="delete">
-    <input type ="submit" value="Retire Wrangler?">
+    <input type ="submit" value="Retire Wrangler" class="btn btn-danger">
   </form>

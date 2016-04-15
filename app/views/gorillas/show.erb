@@ -1,11 +1,24 @@
 <% if @gorilla %>
   <h1><%= @gorilla.name %></h1>
  	<p><em>Age:</em> <%= @gorilla.age %></p>
-  <p><em>Preserve:</em> <%= @gorilla.preserve ? "#{@gorilla.preserve.name}" : "Escaped the preserve area" %></p>
 
+ 	<img src="../gorilla<%= @gorilla.id %>.jpg" class="img-responsive" width="304" height="236"> 
+
+
+  <p><em>Currently Located:</em> <%= @gorilla.preserve ? "#{@gorilla.preserve.name} Preserve" : "Escaped the preserve area" %></p>
+  <% if @gorilla.wranglers.count > 0 %>
+		<hr>  
+	  <h3>Wranglers currently assigned to take care of <%= @gorilla.name %></h3>
+	  <% @gorilla.wranglers.each do |wrangler| %>
+	  	<p><%= wrangler.name %><P>
+	  <% end %>
+	  <hr>
+	 
+	 <% end %>
 <% else %>
   <p>No gorilla by that name exists</p>
 <% end %>
 
 <p><a href="/gorillas/<%= @gorilla.id %>/edit">Edit Gorilla</a></p>
+<p><a href="/gorillas/<%= @gorilla.id %>/wranglers">Assign Wranglers</a></p>
 <p><a href="/gorillas">Back to All Gorillas</a></p>

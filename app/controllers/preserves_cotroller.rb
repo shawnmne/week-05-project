@@ -68,10 +68,9 @@ end
   # Delete
   delete "/preserves/:id" do
    @preserve = Preserve.find_by_id(params['id'])
-   @new_preserve = Preserve.find_by_id(params['new_preserve_id'])
- 
+   @new_preserve = Preserve.find_by_id(params['new_preserve_id']) 
    redirect to("/preserves/#{@preserve.id}/edit") if @new_preserve.nil?
-    binding.pry
+
    @preserve.reassign_all_gorillas_and_wranglers(@new_preserve)
    @preserve.destroy
  

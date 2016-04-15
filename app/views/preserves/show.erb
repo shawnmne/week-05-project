@@ -1,6 +1,9 @@
 <% if @preserve %>
   <h1><%= @preserve.name %></h1>
  	<p><em>Location:</em> <%= @preserve.location %></p>
+
+ 	<img src="../preserve<%= @preserve.id %>.jpg" class="img-responsive" width="304" height="236">
+
 <% else %>
   <p>No preserve by that name exists</p>
 <% end %>
