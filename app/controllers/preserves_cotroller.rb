@@ -35,6 +35,7 @@ end
   get '/preserves/:id/gorillas' do 
     @preserve = Preserve.find_by_id(params['id']) 
     @gorillas = Gorilla.all
+    @preserve.gorillas_hungry?(@gorillas)
     if @preserve.gorillas_fighting?(@gorillas)
       erb :"preserves/gorillas_fighting"
     else
@@ -46,6 +47,12 @@ end
   get '/preserves/:id/wranglers' do 
     @preserve = Preserve.find_by_id(params['id']) 
     @wranglers = Wrangler.all
+    @gorillas = Gorilla.all 
+    if @preserve.wranglers.count > 0
+      @preserve.gorillas_get_fed(@gorillas) 
+    else
+      @preserve.gorillas_go_hungry(@gorillas)
+    end
     erb :"preserves/show_wranglers"
   end
 
