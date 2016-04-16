@@ -8,7 +8,7 @@
 <h3>Age: <span class="label label-default"></h3><input type="text", name="age", value="<%= @wrangler.age %>" class="form-control"></br>
 <h3>Preserve: <span class="label label-default"></h3>
    <select name="preserve_id">
-     <option>No Preserve</option>
+     <option>Send Fishing</option>
      <% @preserves.each do |preserve| %>
        <% if preserve.id == @wrangler.preserve_id %>
          <% selected = "selected" %>
@@ -20,7 +20,7 @@
        </option>
      <% end %>
    </select>
-  <input type="submit" value="Edit Wrangler" class="btn btn-primary">
+  <input type="submit" value="Assign Wrangler" class="btn btn-primary">
 </form>
 <% else %>
   <p>No Wrangler of that ID exists</p>

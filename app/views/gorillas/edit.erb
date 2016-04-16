@@ -11,7 +11,7 @@
   </div>
   <h3>Preserve: <span class="label label-default"></h3>
    <select name="preserve_id">
-     <option>No Preserve</option>
+
      <% @preserves.each do |preserve| %>
        <% if preserve.id == @gorilla.preserve_id %>
          <% selected = "selected" %>
@@ -24,7 +24,7 @@
      <% end %>
    </select>
 
-  <input type="submit" value="Edit Gorilla" class="btn btn-primary" >
+  <input type="submit" value="Move Gorilla" class="btn btn-primary" >
 
 </form>
 <% else %>
