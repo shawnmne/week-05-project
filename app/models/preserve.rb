@@ -40,15 +40,15 @@ class Preserve < ActiveRecord::Base
   end
 
 #gorillas_hungry? method checks to see if there is a hungry gorilla 
-#    ready to to take off
+#    ready to to take off from a preserve
 #
 #gorillas - array: contains all the gorilla objects at the preserve
 #
 #returns either true or false
-   def gorillas_hungry?(gorillas)
+   def gorillas_hungry?(gorillas, preserve)
     count = 0
     gorillas.each do |g|
-      if g.hunger_level > 1
+      if g.hunger_level > 1 && g.preserve_id == preserve.id
         g.update_attributes(preserve_id: nil)
         count += 1
       else 
@@ -57,44 +57,47 @@ class Preserve < ActiveRecord::Base
     end
     count > 0
   end
-
-#gorillas_get_fed method feeds all gorillas at the preserve by 
+  #gorillas_get_fed method feeds all gorillas by 
 #    lowering there hunger_level by 1
 #
 #gorillas - array: contains all the gorilla objects at the preserve
 #
 #
-  def gorillas_get_fed(gorillas)
+  def gorillas_get_fed(gorillas, preserve)
     gorillas.each do |g|
-      binding.pry
-      g.hunger_level = g.hunger_level - 1
-      if g.hunger_level < 1
-        g.hunger_level = 0
-      else
-        g.hunger_level
+      if g.preserve_id == preserve.id
+        g.hunger_level = g.hunger_level - 1
+        if g.hunger_level < 1
+          g.hunger_level = 0
+        else
+          g.hunger_level
+        end
+        g.update_attributes(hunger_level: g.hunger_level)
       end
-
-      g.update_attributes(hunger_level: g.hunger_level)
     end
+    true
   end
 
 
-#gorillas_go_hungry method feeds all gorillas at the preserve by 
+#gorillas_go_hungry method feeds all gorillas by 
 #    raising there hunger_level by 1
 #
 #gorillas - array: contains all the gorilla objects at the preserve
 #
 #
-  def gorillas_go_hungry(gorillas)
+  def gorillas_go_hungry(gorillas, preserve)
     gorillas.each do |g|
-      g.hunger_level = g.hunger_level + 1
-      if g.hunger_level > 1
-        g.hunger_level = 2
-      else
-        g.hunger_level
+      if g.preserve_id == preserve.id
+        g.hunger_level = g.hunger_level + 1
+        if g.hunger_level > 1
+          g.hunger_level = 2
+        else
+          g.hunger_level
+        end
+        g.update_attributes(hunger_level: g.hunger_level)
       end
-      g.update_attributes(hunger_level: g.hunger_level)
     end
+    true
   end
 
-end 
+end

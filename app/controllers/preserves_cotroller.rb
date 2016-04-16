@@ -35,8 +35,10 @@ end
   get '/preserves/:id/gorillas' do 
     @preserve = Preserve.find_by_id(params['id']) 
     @gorillas = Gorilla.all
-    @preserve.gorillas_hungry?(@gorillas)
-    if @preserve.gorillas_fighting?(@gorillas)
+
+    if @preserve.gorillas_hungry?(@gorillas, @preserve)
+      erb :"preserves/gorillas_escaping"
+    elsif @preserve.gorillas_fighting?(@gorillas)
       erb :"preserves/gorillas_fighting"
     else
       erb :"preserves/show_gorillas"
@@ -49,9 +51,9 @@ end
     @wranglers = Wrangler.all
     @gorillas = Gorilla.all 
     if @preserve.wranglers.count > 0
-      @preserve.gorillas_get_fed(@gorillas) 
+      @preserve.gorillas_get_fed(@gorillas, @preserve)
     else
-      @preserve.gorillas_go_hungry(@gorillas)
+      @preserve.gorillas_go_hungry(@gorillas, @preserve)
     end
     erb :"preserves/show_wranglers"
   end

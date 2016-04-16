@@ -8,47 +8,51 @@
 
   <p><em>Currently Located:</em> <%= @gorilla.preserve ? "#{@gorilla.preserve.name} Preserve" : "Escaped the preserve area" %></p>
 
-  <hr>
-  <% if @gorilla.hunger_level < 1 %>
-  
-  	<h4><%= @gorilla.name %> has had plenty to eat.
-  
-  <% elsif @gorilla.hunger_level == 1 %>	
-	
-  	<h3><%= @gorilla.name %> is hungry and starting to look at you funny.
+    <% if @gorilla.preserve_id != nil %>
 
-  <% elsif @gorilla.hunger_level > 1 %>	
-	
-  	<h2><%= @gorilla.name %> is famished and may make a run for it.
-		
-  <% end %>
+      <hr>
 
-  <% if @gorilla.anger_level < 1 %>
-  
-  	<h4><%= @gorilla.name %> is happy and all smiles.
-  
-  <% elsif @gorilla.anger_level == 1 %>	
-	
-  	<h3><%= @gorilla.name %> is angry.
+      <% if @gorilla.hunger_level < 1 %>
+      
+      	<h4><%= @gorilla.name %> has had plenty to eat.
+      
+      <% elsif @gorilla.hunger_level == 1 %>	
+    	
+      	<h3><%= @gorilla.name %> is hungry and starting to look at you funny.
 
-   <% elsif @gorilla.anger_level > 1 %>	
-	
-  	<h2><%= @gorilla.name %> is mad and ready to fight.
-  
-  <% end %>
-  <hr>
+      <% elsif @gorilla.hunger_level > 1 %>	
+    	
+      	<h2><%= @gorilla.name %> is famished and may make a run for it.
+    		
+      <% end %>
 
-  <% if @gorilla.wranglers.count > 0 %>
-		<hr>  
-	  <h3>Wranglers currently assigned to take care of <%= @gorilla.name %></h3>
-	  <% @gorilla.wranglers.each do |wrangler| %>
-	  	<p><%= wrangler.name %><P>
-	  <% end %>
-	  <hr>
-	 
-	 <% end %>
-<% else %>
-  <p>No gorilla by that name exists</p>
+      <% if @gorilla.anger_level < 1 %>
+      
+      	<h4><%= @gorilla.name %> is happy and all smiles.
+      
+      <% elsif @gorilla.anger_level == 1 %>	
+    	
+      	<h3><%= @gorilla.name %> is angry.
+
+       <% elsif @gorilla.anger_level > 1 %>	
+    	
+      	<h2><%= @gorilla.name %> is mad and ready to fight.
+      
+      <% end %>
+
+
+      <% if @gorilla.wranglers.count > 0 %>  
+    	  <h3>Wranglers currently assigned to take care of <%= @gorilla.name %></h3>
+    	  <% @gorilla.wranglers.each do |wrangler| %>
+    	  	<p><%= wrangler.name %><P>
+    	  <% end %>
+      <% end %>
+      <hr>
+     <% end %>  
+  <% else %>
+      <p>No gorilla by that name exists</p>
+
+
 <% end %>
 
 <p><a href="/gorillas/<%= @gorilla.id %>/edit">Edit Gorilla</a></p>
