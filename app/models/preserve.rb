@@ -17,10 +17,10 @@ class Preserve < ActiveRecord::Base
      true
    end
 
-   def gorillas_fighting?(gorillas)
+   def gorillas_fighting?(gorillas, preserve)
     count = 0
     gorillas.each do |g|
-      if g.anger_level > 1
+      if g.anger_level > 1 && g.preserve_id == preserve.id
         count += 1
       end
     end
